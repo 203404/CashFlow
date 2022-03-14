@@ -1,0 +1,7 @@
+CREATE DATABSE dbCashF
+
+CREATE TABLE login(
+    id SERIAL PRIMARY KEY,
+    user VARCHAR(255) UNIQUE,
+    password VARCHAR(255)
+);
