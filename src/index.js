@@ -4,7 +4,7 @@ const morgan = require("morgan");
 const cors =require('cors')
 
 //Routes imports
-const loginRoutes=require('./routes/login/routes')
+const loginRoutes=require('./routes/login/login')
 
 
 // server
