@@ -5,6 +5,7 @@ const cors =require('cors')
 
 //Routes imports
 const loginRoutes=require('./routes/login/login')
+const categoriasRoutes=require('./routes/categorias/categorias')
 
 
 // server
@@ -17,7 +18,8 @@ app.use(json());
 app.use(cors());
 
 // routes 
-app.use('/api/login',loginRoutes)
+app.use('/api/v1',loginRoutes)
+app.use('/api/v1',categoriasRoutes)
 
 
 

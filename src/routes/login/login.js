@@ -1,25 +1,10 @@
 const {Router} = require('express')
-const pool=require('../../db')
+const {checkCredentials} =require('../../controllers/login/login')
 
 const router=Router();
 
-router.post('/', async (req,res)=>{
-    try {
-        const { user, password } = req.body
-        const response = await pool.query('select * from login WHERE username=$1 AND PASSWORD=$2 ', [ user, password ])
-        
-        if(response.rows.length===0){
-            res.send('Las credenciales no son correctas')
-        }else{
-            res.send('login exitoso')
-        }
-        
-        
-    } catch (error) {
-        console.log(error)
-        res.send('todo mal')
-    }
-    
-})
+
+// Method to login (cheack credentials )
+router.post('/login', checkCredentials)
 
 module.exports =router;
