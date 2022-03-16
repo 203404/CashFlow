@@ -10,5 +10,8 @@ module.exports={
         port:process.env.DB_port,
         database:process.env.DB_database,
     
+    },
+    server:{
+        port:process.env.PORT
     }
 }
