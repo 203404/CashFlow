@@ -46,7 +46,17 @@ const createCategoria = async (req, res)=>{
         console.log(clasificacion,"\n",categoria,"\n",sub_categoria)
         const response= await pool.query('INSERT INTO categorias (clasificacion, categoria, sub_categoria) VALUES ($1,$2,$3)',[clasificacion,categoria,sub_categoria])
 
-        res.json(response)
+        if(response.rowCount===0){
+            res.status(203).json({
+                "message":"No se pudo agregar ningun dato"
+            })
+        }else{
+            res.status(201).json({
+                "message":"Dato creado correctamente"
+            })
+        }
+
+        
     } catch (error) {
         res.json(error)
     }
