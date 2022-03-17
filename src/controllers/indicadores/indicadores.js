@@ -40,8 +40,8 @@ const getSingleIndic = async (req,res)=>{
 const createIndic = async (req, res)=>{
     try {
         console.log(req.body)
-        const {num_sem, mes, descrip, monto}=req.body
-        const response= await pool.query('insert into indicadores (num_sem, mes, descrip, monto) values ($1, $2,$3,$4)',[num_sem, mes, descrip, monto])
+        const {num_sem, mes, descrip, monto, tipo_registro}=req.body
+        const response= await pool.query('insert into indicadores (num_sem, mes, descrip, monto,tipo_registro) values ($1, $2,$3,$4,$5)',[num_sem, mes, descrip, monto,tipo_registro])
         if(response.rowCount===0){
             res.status(400).json({
                 'error_Message':"No se pudo crear el flujo de efectivo"

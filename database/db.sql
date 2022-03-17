@@ -41,7 +41,8 @@ CREATE TABLE indicadores(
     num_sem int not null,
     mes VARCHAR(255) not null,
     descrip VARCHAR(255) not null,
-    monto bigint not null
+    monto bigint not null,
+    tipo_registro VARCHAR (255) NOT NULL
 );
 
 /* Ejemplo de insertción de datos a la tabla indicadores*/
