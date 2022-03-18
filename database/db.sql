@@ -9,15 +9,15 @@ CREATE DATABSE dbCashFlow
 CREATE TABLE login(
     id SERIAL PRIMARY KEY,
     username VARCHAR(255) UNIQUE not null,
-    password VARCHAR(255) not null
+    password VARCHAR(255) not null,
+    rol VARCHAR(255) not null
 );
 
 
 /* Creating table for categorias */
 CREATE TABLE categorias(
     id SERIAL PRIMARY KEY,
-    clasificacion VARCHAR(255) not null,
-    categoria VARCHAR(255) not null,
+    categoria VARCHAR(255) not null, /*Los daots de esta columna solo pueden ser 3: ingreso, costo-venta, gasto-aoc*/
     sub_categoria VARCHAR(255) not null
 );
 

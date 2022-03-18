@@ -6,7 +6,6 @@ const getAllCategorias = async (req,res)=>{
 
         const response = await pool.query('select * from categorias')
         
-        console.log(response.rows)
 
         res.json(response.rows)
         
@@ -41,11 +40,9 @@ const getSingleCategoria = async (req,res)=>{
 
 const createCategoria = async (req, res)=>{
     try {
-        console.log(req.body)
-        const {clasificacion, categoria, sub_categoria}=req.body
-        console.log(clasificacion,"\n",categoria,"\n",sub_categoria)
-        const response= await pool.query('INSERT INTO categorias (clasificacion, categoria, sub_categoria) VALUES ($1,$2,$3)',[clasificacion,categoria,sub_categoria])
-
+        
+        const {categoria, sub_categoria}=req.body
+        const response= await pool.query('INSERT INTO categorias (categoria, sub_categoria) VALUES ($1,$2)',[categoria,sub_categoria])
         if(response.rowCount===0){
             res.status(203).json({
                 "message":"No se pudo agregar ningun dato"
@@ -65,8 +62,8 @@ const createCategoria = async (req, res)=>{
 
 const updateCategoria=async (req,res)=>{
     try {
-        const {id, clasificacion, categoria, sub_categoria}=req.body
-        const response= await pool.query(' UPDATE categorias SET clasificacion = $1, categoria = $2, sub_categoria = $3 WHERE id=$4;',[clasificacion,categoria,sub_categoria,id])
+        const {id,categoria, sub_categoria}=req.body
+        const response= await pool.query(' UPDATE categorias SET categoria = $1, sub_categoria = $2 WHERE id=$3;',[categoria,sub_categoria,id])
 
 
         if(response.rowCount===0){
