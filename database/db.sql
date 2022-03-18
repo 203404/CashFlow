@@ -1,6 +1,6 @@
 
 /* Creating database */
-CREATE DATABSE dbCashFlow
+CREATE DATABASE dbCashFlow
 
 
 
@@ -24,8 +24,8 @@ CREATE TABLE categorias(
 /* Creating table for flujo de efectivo */
 CREATE TABLE flujo_efectivo(
     id SERIAL PRIMARY KEY,
-    id_categoria int REFERENCES categorias(id) not null,
     es_ingreso boolean not null,
+    id_categoria int REFERENCES categorias(id) not null,
     descripcion VARCHAR(255) not null,
     cantidad bigint not null,
     fecha date not null
