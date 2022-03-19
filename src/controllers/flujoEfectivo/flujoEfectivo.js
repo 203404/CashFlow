@@ -40,10 +40,10 @@ const getSingleflujo = async (req,res)=>{
 const createFlujo = async (req, res)=>{
     try {
         console.log(req.body)
-        const {id_categoria, es_ingreso, descripcion,cantidad}=req.body
+        const {categoria, sub_categoria,id_categoria, es_ingreso, descripcion,cantidad}=req.body
         // console.log(id_categoria, es_ingreso, descripcion,cantidad)
         // console.log(getDate());
-        const response= await pool.query('insert into flujo_efectivo (id_categoria,es_ingreso,descripcion, cantidad, fecha) values ($1, $2,$3,$4,$5)',[id_categoria, es_ingreso, descripcion,cantidad,getDate()])
+        const response= await pool.query('insert into flujo_efectivo (categoria, sub_categoria,id_categoria,es_ingreso,descripcion, cantidad, fecha) values ($1, $2,$3,$4,$5,$6,$7)',[categoria, sub_categoria,id_categoria, es_ingreso, descripcion,cantidad,getDate()])
         if(response.rowCount===0){
             res.status(400).json({
                 'error_Message':"No se pudo crear el flujo de efectivo"
