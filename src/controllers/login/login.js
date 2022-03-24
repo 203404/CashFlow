@@ -30,7 +30,7 @@ const checkCredentials =async (req,res)=>{
 const createLogin=async(req,res)=>{
     try {
         const { user, password, rol } = req.body
-        const response =await pool.query('insert into login (username,password,rol) values ($1,$2,$3)', [ user, password , password])
+        const response =await pool.query('insert into login (username,password,rol) values ($1,$2,$3)', [ user, password , rol])
         console.log(response)
         if(response.rowCount===0){
             res.status(203).json({
