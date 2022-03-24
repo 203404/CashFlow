@@ -30,6 +30,11 @@ const checkCredentials =async (req,res)=>{
 const createLogin=async(req,res)=>{
     try {
         const { user, password, rol } = req.body
+        if(!user || !password || !rol){
+            res.status(400).json({
+                message:"Recibiendo malos datos para almacenar"
+            })
+        }
         const response =await pool.query('insert into login (username,password,rol) values ($1,$2,$3)', [ user, password , rol])
         console.log(response)
         if(response.rowCount===0){
@@ -38,9 +43,8 @@ const createLogin=async(req,res)=>{
                 message:'No se pudo generar el registro '
             })
         }else{
-            res.json({
+            res.status(201).json({
                 message: 'Registro exitoso',
-                tipo: response.rows[0]
             })
         }
     } catch (error) {
