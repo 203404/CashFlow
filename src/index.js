@@ -9,6 +9,7 @@ const loginRoutes=require('./routes/login/login')
 const categoriasRoutes=require('./routes/categorias/categorias')
 const flujoEfectivoRoutes=require('./routes/flujoefectivo/flujoefectivo');
 const indicadoresRoutes=require('./routes/indicadores/indicadores')
+const register =require('./routes/login/register')
 
 
 // server
@@ -26,6 +27,7 @@ app.use(rootUrl,loginRoutes)
 app.use(rootUrl,categoriasRoutes)
 app.use(rootUrl,flujoEfectivoRoutes)
 app.use(rootUrl,indicadoresRoutes)
+app.use(rootUrl,register)
 
 
 
