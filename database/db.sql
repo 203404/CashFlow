@@ -26,8 +26,8 @@ CREATE TABLE flujo_efectivo(
     id SERIAL PRIMARY KEY,
     es_ingreso boolean not null,
     id_categoria int REFERENCES categorias(id) not null,
-    categoria VARCHAR(255) REFERENCES categorias(categoria) not null,
-    sub_categoria VARCHAR(255) REFERENCES categorias(sub_categoria) not null,
+    categoria VARCHAR(255)  not null,
+    sub_categoria VARCHAR(255)  not null,
     descripcion VARCHAR(255) not null,
     cantidad bigint not null,
     fecha date not null
