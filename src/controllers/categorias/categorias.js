@@ -42,6 +42,7 @@ const createCategoria = async (req, res)=>{
     try {
         
         const {categoria, sub_categoria}=req.body
+        console.log(categoria ,"+",sub_categoria);
         const response= await pool.query('INSERT INTO categorias (categoria, sub_categoria) VALUES ($1,$2)',[categoria,sub_categoria])
         if(response.rowCount===0){
             res.status(203).json({

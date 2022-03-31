@@ -6,7 +6,7 @@ const getAllFlujos = async (req,res)=>{
 
         const response = await pool.query('select * from flujo_efectivo')
         
-        console.log(response.rows)
+        
 
         res.json(response.rows)
         
@@ -41,8 +41,8 @@ const createFlujo = async (req, res)=>{
     try {
         console.log(req.body)
         const {categoria, sub_categoria,id_categoria, es_ingreso, descripcion,cantidad}=req.body
-        // console.log(id_categoria, es_ingreso, descripcion,cantidad)
-        // console.log(getDate());
+        console.log(categoria, sub_categoria,id_categoria, es_ingreso, descripcion,cantidad)
+        console.log(getDate());
         const response= await pool.query('insert into flujo_efectivo (categoria, sub_categoria,id_categoria,es_ingreso,descripcion, cantidad, fecha) values ($1, $2,$3,$4,$5,$6,$7)',[categoria, sub_categoria,id_categoria, es_ingreso, descripcion,cantidad,getDate()])
         if(response.rowCount===0){
             res.status(400).json({
